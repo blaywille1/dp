@@ -21,7 +21,7 @@
 
 ***
 
-> GoF类图
+> AbCD类图
 
 ![策略模式](https://raw.githubusercontent.com/blaywille1/dp/master/10.strategy/img/strategy.jpg)
 
