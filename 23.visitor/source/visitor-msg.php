@@ -3,7 +3,13 @@
 interface ServiceVisitor
 {
     public function SendMsg(SendMessage $s);
+
     function PushMsg(PushMessage $p);
+}
+
+interface Message
+{
+    public function Msg(ServiceVisitor $v);
 }
 
 class AliYun implements ServiceVisitor
@@ -13,6 +19,7 @@ class AliYun implements ServiceVisitor
         echo 'Отправить SMS из облака Alibaba
 ！', PHP_EOL;
     }
+
     public function PushMsg(PushMessage $p)
     {
         echo 'Информация о push-уведомлениях об Alibaba Cloud
@@ -27,6 +34,7 @@ class JiGuang implements ServiceVisitor
         echo 'Аврора отправляет смс
 ！', PHP_EOL;
     }
+
     public function PushMsg(PushMessage $p)
     {
         echo 'Аврора Push SMS
@@ -34,16 +42,12 @@ class JiGuang implements ServiceVisitor
     }
 }
 
-interface Message
-{
-    public function Msg(ServiceVisitor $v);
-}
-
 class PushMessage implements Message
 {
     public function Msg(ServiceVisitor $v)
     {
-        echo 'Начать запуск скрипта：';
+        echo 'Начать запуск скрипта
+：';
         $v->PushMsg($this);
     }
 }
@@ -52,7 +56,8 @@ class SendMessage implements Message
 {
     public function Msg(ServiceVisitor $v)
     {
-        echo 'Запуск SMS-скрипта：';
+        echo 'Запуск SMS-скрипта
+：';
         $v->SendMsg($this);
     }
 }
